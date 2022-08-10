@@ -1,0 +1,77 @@
+@import "./Variables.scss";
+
+.carousel_slide{
+    min-height: 80vh;
+    position: relative;
+}
+
+.carousel_slide_overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgb(3,3,3);
+    background: linear-gradient(0deg, rgba(3,3,3,1) 15%, rgba(65,65,65,0.3281906512605042) 75%);
+}
+
+
+.carousel_info_group {
+    position: absolute;
+    left: 10px;
+    bottom: 50px;
+    color: $font-color-light;
+}
+
+.carousel_title{
+    //font-size: calc(1.375rem + 1.5vw);
+}
+
+.carousel_overview{
+    display: none;
+}
+
+.carousel_genres{
+
+}
+
+.carousel_release_date{
+
+}
+
+.carousel_genre_item{
+    display: inline-block;
+}
+
+.carousel_genre_spacer{
+    margin: 0 5px;
+}
+
+
+@media  only screen and (min-width:575px) {
+    .carousel_info_group {
+        left: 40px;
+    }
+}
+
+
+@media only screen and (min-width: 1024px) {
+
+    .carousel_info_group {
+        max-width: 700px;
+    }
+
+    .carousel_overview{
+        display: block;
+    }
+    .carousel_info_group {
+        left: 80px;
+        bottom: 100px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .carousel_info_group {
+        left: 150px;
+    }
+}
