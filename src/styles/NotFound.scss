@@ -1,50 +1,49 @@
-@import "./Variables.scss";
+@import './Variables.scss';
 
-.not_found_page{
-    position: relative;
+.not_found_page {
+  position: relative;
 }
 
-.not_found_overlay{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(21, 21, 21, 0.501);
-    color: $color-light;
+.not_found_overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(21, 21, 21, 0.501);
+  color: $color-light;
 }
 
-.not_found_group{
-    text-align: center;
-    max-width: 800px;
+.not_found_group {
+  text-align: center;
+  max-width: 800px;
 }
 
-.not_found_title{
-    font-size: 35px;
+.not_found_title {
+  font-size: 35px;
 }
 
-.not_found_from{
-    position: absolute;
-    right: 20px;
-    bottom: 5px;
+.not_found_from {
+  position: absolute;
+  right: 20px;
+  bottom: 5px;
 }
-
 
 @media only screen and (min-width: 1024px) {
+  .not_found_group {
+    margin-bottom: 100px;
+  }
 
-    .not_found_group{
-        margin-bottom: 100px;
-    }
-    
-    .not_found_title{
-        font-size: 60px;
-        margin-bottom: 30px;
-    }
+  .not_found_title {
+    font-size: 60px;
+    margin-bottom: 30px;
+  }
 
-    .not_found_text,  .not_found_from{
-        font-size: 30px;
-    }
+  .not_found_text,
+  .not_found_from {
+    font-size: 30px;
+  }
 }
