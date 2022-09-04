@@ -45,7 +45,7 @@ const App = () => {
 
             const token = await response.json();
 
-            window.location.replace(`https://www.themoviedb.org/authenticate/${token.request_token}?redirect_to=http://localhost:8080/`);
+            window.location.replace(`https://www.themoviedb.org/authenticate/${token.request_token}?redirect_to=https://lachlanwhelan.github.io/flicks/`);
         }
         catch(err){
             console.log(err);
