@@ -1,0 +1,22 @@
+
+.btn-menu{
+    display: none;
+}
+
+.profile_list_card{
+    max-width: 170px;
+    margin: 10px 5px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+
+@media only screen and (min-width: 1024px) {
+    .btn-menu{
+        display: block;
+    }
+
+    .select-menu{
+        display:none;
+    }
+}

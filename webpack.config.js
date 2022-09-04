@@ -1,12 +1,13 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
+
 module.exports = {
-    mode: 'development',
+    mode: 'Production',
     entry: './src/index.js',
     output: {
-        filename: 'main.bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+       filename: 'main.bundle.js',
+       path: path.resolve(__dirname, 'dist'),
        publicPath: '/flicks',
     },
 
@@ -43,17 +44,25 @@ module.exports = {
                 ],
               },
               {
-                test: /\.png/,
-                type: 'asset/'
-              }
+                test: /\.(png|jpg|gif|svg)$/i,
+                use: [
+                  {
+                    loader: 'url-loader',
+                    options: {
+                      limit: 8192,
+                    },
+                  },
+                ],
+              },
         ]
     },
     
     //HtmlWebpackPlugin by default will generate its own index.html file, even though we already have one in the dist/ folder
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/template.html',
-            title: 'Flicks.'
+            template: './public/index.html',
+            title: 'Flicks.',
+            favicon: './src/favicon.ico'
         })
     ]
 }

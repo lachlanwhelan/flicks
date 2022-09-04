@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import {Link} from 'react-router-dom';
 import Loader from '../../components/Loader';
 import '../../styles/People.scss';
+import ErrorPage from '../ErrorPage';
 
 const People = () => {
     const [people, setPeople] = useState();
@@ -37,22 +39,22 @@ const People = () => {
     }
 
     if(error){
-        return <h1>Error!</h1>
+        return <ErrorPage/>
     }
     
 
     return (
         <main className=''>
-            <section className='container'>
+            <section className='container people_section'>
                 <h4 className='my-4'>Popular Actors</h4>
                 <div className='people_list d-flex flex-wrap '>
                     {
                         people.map(person => {
                             return (
-                                <div className='person_card m-2'>
+                                <Link to={`/people/${person.id}`} className='person_card m-2'>
                                     <img  src={`https://image.tmdb.org/t/p/w300${person.profile_path}`}/>
                                     <p className='credit_name mt-3'>{person.name}</p>
-                                </div>
+                                </Link>
                             )
                         })
                     }

@@ -6,6 +6,7 @@ import MediaSlider from '../../components/MediaSlider';
 import '../../styles/Media.scss';
 import MediaVideos from '../../components/MediaVideos';
 import { Button } from 'react-bootstrap';
+import ErrorPage from '../ErrorPage';
 
 const Show = () => {
 
@@ -62,14 +63,13 @@ const Show = () => {
     }
 
     if(error){
-        return <h1>Error!</h1>
+        return <ErrorPage/>
     }
 
     return(
         <main>
             <header className='media_header' style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${show.backdrop_path})`, backgroundSize: 'cover', backgroundPosition: 'left'}}>
                 <div className='media_header_overlay d-flex align-items-center'>
-                   <Button className='back_btn' variant='outline-danger' onClick={() => navigate(-1)}>Go back</Button>
                    <div className='container px-4'>
                         <div className='media_header_poster'>
                             <img src={`https://image.tmdb.org/t/p/w300${show.poster_path}`}/>
@@ -95,7 +95,7 @@ const Show = () => {
             <section className='container'>
                 <MediaVideos videos={videos}/> 
                 <CreditSlider credits={credits.cast}/>
-                <MediaSlider media={similarShows} categoryTitle='You may also like' mediaType='TV'/>
+                <MediaSlider media={similarShows} categoryTitle='You may also like' mediaType='tv'/>
             </section>
 
             

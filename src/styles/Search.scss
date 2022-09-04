@@ -1,0 +1,40 @@
+.search_section{
+    margin-top: 100px;
+}
+
+.search_result_options{
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.search_result_options h4{
+    background-color: #da3746;
+    padding: 10px;
+}
+
+.search_result_options .btn{
+    text-align: left;
+    box-shadow: none;
+}
+
+
+.search_item_row{
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #1e1e1e;
+    transition: 0.2s;
+}
+
+.search_item_row:hover{
+    transform: translateY(-5px);
+}
+
+.search_item_img{
+    max-width: 100px;
+    min-width:100px;
+    height: 100%;
+}
+
+.search_item_info p{
+    font-size: 14px;
+}

@@ -3,6 +3,8 @@
 .carousel_slide{
     min-height: 80vh;
     position: relative;
+    background-size: cover;
+    background-position: center
 }
 
 .carousel_slide_overlay{
@@ -20,23 +22,11 @@
     position: absolute;
     left: 10px;
     bottom: 50px;
-    color: $font-color-light;
-}
-
-.carousel_title{
-    //font-size: calc(1.375rem + 1.5vw);
+    color: $color-light;
 }
 
 .carousel_overview{
     display: none;
-}
-
-.carousel_genres{
-
-}
-
-.carousel_release_date{
-
 }
 
 .carousel_genre_item{

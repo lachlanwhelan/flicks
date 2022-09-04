@@ -3,9 +3,10 @@ import Carousel from '../components/Carousel';
 import MediaSlider from '../components/MediaSlider';
 import Loader from '../components/Loader';
 import { Button } from 'react-bootstrap';
+import ErrorPage from './ErrorPage';
 
 const Home = () => {
-    const [mediaType, setMediaType] = useState('MOVIES');
+    const [mediaType, setMediaType] = useState('movie');
     const [media, setMedia] = useState(null);
     const [genres, setGenres] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -15,12 +16,12 @@ const Home = () => {
 
         setLoading(true);
         
-        if(mediaType === 'MOVIES'){
+        if(mediaType === 'movie'){
             getAllMovies();
         }else{
             getAllTV();
         }
-
+        window.scrollTo(0,0);
     }, [mediaType]);
 
 
@@ -47,9 +48,11 @@ const Home = () => {
             setGenres(genres.genres);
             setMedia(movie_data);
 
-            setLoading(false);
+            setTimeout(() => {
+                setLoading(false);
+            },3000);
     
-        }catch(err){
+        } catch(err){
             console.log(err);
             setError(err);
         }
@@ -60,11 +63,11 @@ const Home = () => {
 
         try{
             const responses = await Promise.all([
-                fetch('https://api.themoviedb.org/3/tv/airing_today?api_key=2a5e286bb1bdc7c0bf49d7b6d0707880&language=en-US&page=1'),
-                fetch('https://api.themoviedb.org/3/tv/popular?api_key=2a5e286bb1bdc7c0bf49d7b6d0707880&language=en-US&page=1'),
-                fetch('https://api.themoviedb.org/3/tv/top_rated?api_key=2a5e286bb1bdc7c0bf49d7b6d0707880&language=en-US&page=1'),
-                fetch('https://api.themoviedb.org/3/tv/on_the_air?api_key=2a5e286bb1bdc7c0bf49d7b6d0707880&language=en-US&page=1'),
-                fetch('https://api.themoviedb.org/3/genre/tv/list?api_key=2a5e286bb1bdc7c0bf49d7b6d0707880&language=en-US')
+                fetch(`https://api.themoviedb.org/3/tv/airing_today?api_key=2a5e286bb1bdc7c0bf49d7b6d0707880&language=en-US&page=1`),
+                fetch(`https://api.themoviedb.org/3/tv/popular?api_key=2a5e286bb1bdc7c0bf49d7b6d0707880&language=en-US&page=1`),
+                fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=2a5e286bb1bdc7c0bf49d7b6d0707880&language=en-US&page=1`),
+                fetch(`https://api.themoviedb.org/3/tv/on_the_air?api_key=2a5e286bb1bdc7c0bf49d7b6d0707880&language=en-US&page=1`),
+                fetch(`https://api.themoviedb.org/3/genre/tv/list?api_key=2a5e286bb1bdc7c0bf49d7b6d0707880&language=en-US`)
             ]);
     
             const tv_data = await Promise.all(responses.map(response => {
@@ -76,11 +79,13 @@ const Home = () => {
             }));
 
             const genres = tv_data.pop();
-    
-            //console.log(genres);
-            //setGenres(genres);
+
+            
+            setGenres(genres.genres);
             setMedia(tv_data);
-            setLoading(false);
+            setTimeout(() => {
+                setLoading(false);
+            },3000)
     
         }catch(err){
             console.log(err);
@@ -95,7 +100,7 @@ const Home = () => {
     }
 
     if(error){
-        return <h1>Error!</h1>
+        return <ErrorPage/>
     }
     
     return(
@@ -103,13 +108,13 @@ const Home = () => {
             <Carousel slides={media[3].results} genres={genres} mediaType={mediaType}/>
         
             <div className='my-1 d-flex justify-content-center'>
-                <Button className='flicks_btn text-white' variant='outline-danger' size='lg' onClick={() => setMediaType('MOVIES')}>Movies</Button>
-                <Button className='flicks_btn text-white' variant='outline-danger' size='lg' onClick={() => setMediaType('TV')}>TV</Button>
+                <Button className='flicks_btn' variant='outline-danger' size='lg' onClick={() => setMediaType('movie')}>Movies</Button>
+                <Button className='flicks_btn' variant='outline-danger' size='lg' onClick={() => setMediaType('tv')}>TV</Button>
             </div>
             
             <section className='container'>
             {
-                mediaType === "MOVIES" ?
+                mediaType === "movie" ?
                     <>
                         <MediaSlider media={media[0].results} categoryTitle='Now Playing' mediaType={mediaType}/>
                         <MediaSlider media={media[1].results} categoryTitle='Popular' mediaType={mediaType}/>

@@ -1,0 +1,99 @@
+@import "./Variables.scss";
+
+.slider{
+
+
+    .media_slider_link{
+        overflow: hidden;
+    }
+    
+    .media_slider_link img{
+        transition: 0.2s ease;
+    }
+    
+    .media_slider_link img:hover{
+        transform: scale(1.05);
+    }
+
+    .media_slide{
+        overflow: visible;
+    }
+
+    
+    .swiper-slide a{
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+        display: block;
+    }
+    
+    .swiper-button-prev, .swiper-button-next{
+        position: absolute;
+        background: rgb(255 46 46 / 68%);
+        width: 50px;
+        height: 50px;
+        z-index: 100;
+        border-radius: 50%;
+        top: 40%;
+        cursor: pointer;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.2s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .swiper-button-prev::before, .swiper-button-next::before{
+        content: "";
+        height: 15px;
+        width: 15px;
+        display: block;
+        border-left: 3px solid #ffffff;
+        border-top: 3px solid #ffffff;
+    }
+    
+    .swiper-button-prev::before{
+        transform: rotate(-45deg);
+    }
+    
+    .swiper-button-next::before{
+        transform: rotate(135deg);
+    }
+    
+    .swiper-button-prev{
+        left: 5px;
+    }
+    
+    .swiper-button-next{
+        right: 5px;
+    }
+}
+  
+.slider:hover{
+    .swiper-button-prev, .swiper-button-next{
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(-5px);
+    }
+}
+
+.credit_scrollable_list{
+    display: flex;
+    overflow: scroll;
+
+    .credit_headshot{
+      max-width: 200px;
+      margin: 0 10px;
+    }
+}
+
+
+@media only screen and (min-width: 1024px) {
+    .media_slider{
+        .user_actions_dropdown .dropdown-menu{
+            transform: translate3d(-115px, 30.5px, 0px) !important;
+        }
+    }
+}
+  
